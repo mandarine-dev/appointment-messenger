@@ -13,7 +13,7 @@ namespace XamarinChatApp
         {
             InitializeComponent();
 
-            MainPage = new XamarinChatApp.MainPage();
+            MainPage = new XamarinChatApp.ChatPage();
         }
 
         protected override void OnStart()
@@ -30,5 +30,24 @@ namespace XamarinChatApp
         {
             // Handle when your app resumes
         }
+    }
+
+    public static class ViewModelLocator
+    {
+        static MessagesViewModel VM;
+        public static MessagesViewModel MessagesViewModel
+        {
+            get
+            {
+                if (VM == null)
+                {
+                    VM = new MessagesViewModel();
+                    VM.InitializeMock();
+                }
+                return VM;
+
+            }
+        }
+
     }
 }
