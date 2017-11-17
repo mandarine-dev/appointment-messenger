@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "613057781208",
+    "firebase_url": "https://appointment-messenger.firebaseio.com",
+    "project_id": "appointment-messenger",
+    "storage_bucket": "appointment-messenger.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:613057781208:android:644575ac47a2835c",
+        "android_client_info": {
+          "package_name": "com.appointment.messenger"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "613057781208-sln6fpc6san5karqful32c3fnri4ru9m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtAWqNNAJKxwZ0zoU0p1Nseh2O5HN1EJE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
