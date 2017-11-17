@@ -7,6 +7,11 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 
+using Android.Gms.Common;
+using Firebase.Messaging;
+using Firebase.Iid;
+using Android.Util;
+
 namespace XamarinChatApp.Droid
 {
     [Activity(Label = "XamarinChatApp", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
