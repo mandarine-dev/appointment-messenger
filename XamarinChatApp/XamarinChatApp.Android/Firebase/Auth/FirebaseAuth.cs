@@ -20,12 +20,7 @@ namespace XamarinChatApp.Droid.Firebase.Auth
         //private const string FirebaseUrl = "https://appointment-messenger.firebaseio.com/";
         private FirebaseAuthProvider _authProvider = new FirebaseAuthProvider(new FirebaseConfig("AIzaSyAtAWqNNAJKxwZ0zoU0p1Nseh2O5HN1EJE"));
 
-        private FirebaseAuth _auth;
-
-        public FirebaseAuth()
-        {
-            this._auth = FirebaseAuth.Instance;
-        }
+        public FirebaseAuth() { }
 
         public static FirebaseAuth Instance { get; } = new FirebaseAuth();
 

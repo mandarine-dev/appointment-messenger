@@ -16,9 +16,9 @@ using Firebase.Xamarin.Auth;
 using XamarinChatApp.Droid.Firebase.Auth;
 using Firebase.Xamarin.Database;
 using Firebase.Xamarin.Database.Query;
-using TinyIoC;
 using XamarinChatApp.Firebase.Auth;
 using FirebaseAuth = XamarinChatApp.Droid.Firebase.Auth.FirebaseAuth;
+using SimpleInjector;
 
 namespace XamarinChatApp.Droid
 {
@@ -31,40 +31,37 @@ namespace XamarinChatApp.Droid
 
         protected override void OnCreate(Bundle bundle)
         {
-            var container = TinyIoCContainer.Current;
-
-            container.Register<IFirebaseAuth, FirebaseAuth>();
-            container.Register<IFirebaseUser, FirebaseUser>();
-
+            var container = new Container();
+            container.Register<IFirebaseAuth, FirebaseAuth>(Lifestyle.Singleton);
+            container.Verify();
+            
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
 
-            CreateUser();
-
             global::Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
         }
 
-        private async void CreateUser()
-        {
-            //FirebaseAuthProvider authProvider = new FirebaseAuthProvider(new FirebaseConfig("AIzaSyAtAWqNNAJKxwZ0zoU0p1Nseh2O5HN1EJE"));
+        //private async void CreateUser()
+        //{
+        //    //FirebaseAuthProvider authProvider = new FirebaseAuthProvider(new FirebaseConfig("AIzaSyAtAWqNNAJKxwZ0zoU0p1Nseh2O5HN1EJE"));
 
-            //var auth = await _firebaseAuth.CreateEmailPasswordUser(authProvider, "sofiane@gramadi.fr", "password");
+        //    //var auth = await _firebaseAuth.CreateEmailPasswordUser(authProvider, "sofiane@gramadi.fr", "password");
 
 
 
-            //FirebaseUser user = new FirebaseUser();
-            //user.DisplayName = "Test 1";
-            //user.Email = "test@test.fr";
-            //user.Uid = "fjzojf";
+        //    //FirebaseUser user = new FirebaseUser();
+        //    //user.DisplayName = "Test 1";
+        //    //user.Email = "test@test.fr";
+        //    //user.Uid = "fjzojf";
 
-            //var firebase = new FirebaseClient(FirebaseUrl);
+        //    //var firebase = new FirebaseClient(FirebaseUrl);
 
-            ////Add item
-            //var item = await firebase.Child("users").PostAsync<FirebaseUser>(user);
-        }
+        //    ////Add item
+        //    //var item = await firebase.Child("users").PostAsync<FirebaseUser>(user);
+        //}
     }
 }
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Firebase.Xamarin.Auth;
+using SimpleInjector;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,10 +12,9 @@ namespace XamarinChatApp.Services
     public class AuthService
     {
         public IFirebaseAuth FirebaseAuth { get; }
-
         public AuthService()
         {
-            FirebaseAuth = TinyIoC.TinyIoCContainer.Current.Resolve<IFirebaseAuth>();
         }
+
     }
 }
