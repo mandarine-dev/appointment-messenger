@@ -13,7 +13,7 @@ namespace XamarinChatApp
         {
             InitializeComponent();
 
-            MainPage = new XamarinChatApp.ChatPage();
+            MainPage = new XamarinChatApp.LoginPage();
         }
 
         protected override void OnStart()
