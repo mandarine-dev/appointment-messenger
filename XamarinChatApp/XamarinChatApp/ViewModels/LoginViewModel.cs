@@ -10,6 +10,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XamarinChatApp.Interfaces;
 using XamarinChatApp.Services;
+using XamarinChatApp.Views;
 
 namespace XamarinChatApp.ViewModels
 {

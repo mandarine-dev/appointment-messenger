@@ -5,6 +5,7 @@ using System.Text;
 
 using Xamarin.Forms;
 using XamarinChatApp.ViewModels;
+using XamarinChatApp.Views;
 
 namespace XamarinChatApp
 {

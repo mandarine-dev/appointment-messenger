@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using XamarinChatApp.Interfaces;
+using XamarinChatApp.Views;
 
 namespace XamarinChatApp.Services
 {
