@@ -14,24 +14,13 @@ namespace XamarinChatApp.ViewModels
 {
     public class MessagesViewModel : BaseViewModel
     {
-        public static MessagesViewModel Instance
-        {
-            get
-            {
-                if (Instance != null)
-                    return Instance;
-                return Instance = new MessagesViewModel();
-            }
-            private set => Instance = value;
-        }
-
         public ObservableRangeCollection<Message> Messages { get; set; }
 
-        string _OutGoingText = string.Empty;
+        private string _outGoingText = string.Empty;
         public string OutGoingText
         {
-            get { return _OutGoingText; }
-            set { SetProperty(ref _OutGoingText, value); }
+            get => _outGoingText;
+            set => SetProperty(ref _outGoingText, value);
         }
 
         public ICommand SendCommand { get; set; }

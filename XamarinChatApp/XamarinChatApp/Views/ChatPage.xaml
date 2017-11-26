@@ -4,10 +4,8 @@
 		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 		x:Class="XamarinChatApp.Views.ChatPage" 
 		xmlns:local="clr-namespace:XamarinChatApp;assembly=XamarinChatApp"
-		xmlns:vm="clr-namespace:XamarinChatApp.ViewModels;assembly=XamarinChatApp">
-    <ContentPage.BindingContext>
-        <vm:MessagesViewModel/>
-    </ContentPage.BindingContext>
+        Title="Chat"
+        BindingContext="{x:Static local:App.MessagesViewModel}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:MessageDataTemplateSelector x:Key="MessageTemplateSelector"/>

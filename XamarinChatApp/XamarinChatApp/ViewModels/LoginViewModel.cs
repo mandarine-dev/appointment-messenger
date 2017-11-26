@@ -9,33 +9,41 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XamarinChatApp.Services;
+using XamarinChatApp.Views;
 
 namespace XamarinChatApp.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
-        public static LoginViewModel Instance
+        #region Properties
+        private string _username;
+        public string Username
         {
-            get
-            {
-                if (Instance != null)
-                    return Instance;
-                return Instance = new LoginViewModel();
-            }
-            private set => Instance = value;
+            get => _username;
+            set => SetProperty(ref _username, value);
         }
 
-        private string username;
-        private string password;
+        private string _password;
+        public string Password
+        {
+            get => _password;
+            set => SetProperty(ref _password, value);
+        }
+        #endregion
 
-        private AuthService _authService;
+        #region Commands
         public ICommand LoginCommand { get; set; }
-        
+        public ICommand GoToRegisterCommand { get; set; }
+        #endregion
+
         public LoginViewModel()
         {
-            _authService = new AuthService();
+            LoginCommand = new Command(async () => await Login(_username, _password));
 
-            LoginCommand = new Command(async () => await Login(username, password));
+            GoToRegisterCommand = new Command(() =>
+            {
+                App.NavigationService.PushAsync(new RegisterPage());
+            });
         }
 
         public async Task Login(string username, string password)
@@ -44,7 +52,7 @@ namespace XamarinChatApp.ViewModels
 
             try
             {
-                await _authService.SignInWithEmailPassword(username, password);
+                await App.AuthService.SignInWithEmailPassword(username, password);
             }
             catch (Exception e)
             {
@@ -52,9 +60,5 @@ namespace XamarinChatApp.ViewModels
             }
         }
 
-        #region ascessors
-        public string Username { get => username; set => username = value; }
-        public string Password { get => password; set => password = value; }
-        #endregion
     }
 }

@@ -3,15 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamarinChatApp.Views.LoginPage"
              xmlns:local="clr-namespace:XamarinChatApp"
-             xmlns:vm="clr-namespace:XamarinChatApp.ViewModels;assembly=XamarinChatApp">
-    <ContentPage.BindingContext>
-        <vm:LoginViewModel/>
-    </ContentPage.BindingContext>
+             Title="Login"
+             BindingContext="{x:Static local:App.LoginViewModel}">
     
     <StackLayout Spacing="20" Padding="20" VerticalOptions="Center">
-        <Entry Placeholder="Username" Text="{Binding Username}" TextChanged="Entry_UsernameChanged"/>
-        <Entry Placeholder="Password" Text="{Binding Password}" TextChanged="Entry_PasswordChanged" IsPassword="true"/>
+        <!--TextChanged="Entry_UsernameChanged"-->
+        <Entry Placeholder="Username" Text="{Binding Username}"/>
+        <!--TextChanged="Entry_PasswordChanged"-->
+        <Entry Placeholder="Password" Text="{Binding Password}" IsPassword="true"/>
         <Button Text="Login" TextColor="White" BackgroundColor="#2ecc71" Command="{Binding LoginCommand}"/>
+        <Label Text="Not registered ?" HorizontalTextAlignment="Center" TextColor="#039be5">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding GoToRegisterCommand}"></TapGestureRecognizer>
+            </Label.GestureRecognizers>
+        </Label>
     </StackLayout>
 
 </ContentPage>
