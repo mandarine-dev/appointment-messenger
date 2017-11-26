@@ -7,6 +7,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XamarinChatApp.Services;
+using XamarinChatApp.ViewModels;
 
 namespace XamarinChatApp
 {
@@ -20,12 +21,9 @@ namespace XamarinChatApp
         public LoginPage()
         {
             InitializeComponent();
+            BindingContext = new LoginViewModel(this.Navigation);
         }
 
         async void LoginAsync(object sender, EventArgs args) => await _authService.CreateEmailPasswordUser(Username, Password);
-
-        void Entry_UsernameChanged(object sender, TextChangedEventArgs e) => Username = e.NewTextValue;
-
-        void Entry_PasswordChanged(object sender, TextChangedEventArgs e) => Password = e.NewTextValue;
     }
 }

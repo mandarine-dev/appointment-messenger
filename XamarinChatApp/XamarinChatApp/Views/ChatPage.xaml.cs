@@ -11,7 +11,7 @@ using Xamarin.Forms.Xaml;
 
 namespace XamarinChatApp
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+    //[XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChatPage : ContentPage
     {
         public MessagesViewModel VM;

@@ -6,9 +6,10 @@
              BindingContext="{x:Static local:ViewModelLocator.LoginViewModel}">
 
     <StackLayout Spacing="20" Padding="20" VerticalOptions="Center">
-        <Entry Placeholder="Username" Text="{Binding Username}" TextChanged="Entry_UsernameChanged"/>
-        <Entry Placeholder="Password" Text="{Binding Password}" TextChanged="Entry_PasswordChanged" IsPassword="true"/>
-        <Button Text="Login" TextColor="White" BackgroundColor="#2ecc71" Command="{Binding LoginCommand}"/>
+        <Entry Placeholder="Username" Text="{Binding Username}"/>
+        <Entry Placeholder="Password" Text="{Binding Password}" IsPassword="true"/>
+        <Button Text="Connexion" TextColor="White" BackgroundColor="#2ECC71" Command="{Binding LoginCommand}"/>
+        <Button Text="Inscription" TextColor="White" BackgroundColor="#52B3D9" Command="{Binding LoginCommand}"/>
     </StackLayout>
 
 </ContentPage>

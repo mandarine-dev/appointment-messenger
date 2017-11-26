@@ -42,7 +42,9 @@
     <Compile Include="Firebase\Auth\IFirebaseAuth.cs" />
     <Compile Include="Firebase\Auth\IFirebaseUser.cs" />
     <Compile Include="Firebase\Common\ErrorCodes.cs" />
+    <Compile Include="Interfaces\IAlert.cs" />
     <Compile Include="Services\AuthService.cs" />
+    <Compile Include="Services\NavigationService.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="Views\ChatPage.xaml.cs">
       <DependentUpon>ChatPage.xaml</DependentUpon>
