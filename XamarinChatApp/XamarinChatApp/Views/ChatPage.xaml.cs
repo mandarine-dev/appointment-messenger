@@ -6,7 +6,7 @@ using XamarinChatApp.ViewModels;
 
 namespace XamarinChatApp.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+    //[XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ChatPage
     {
         public ChatPage()
