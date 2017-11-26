@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinChatApp.LoginPage"
              xmlns:local="clr-namespace:XamarinChatApp"
-             x:Class="XamarinChatApp.LoginPage">
+             BindingContext="{x:Static local:ViewModelLocator.LoginViewModel}">
 
     <StackLayout Spacing="20" Padding="20" VerticalOptions="Center">
-        <Entry Placeholder="Username" Text="{Binding Username}"/>
-        <Entry Placeholder="Password" Text="{Binding Password}" IsPassword="true"/>
+        <Entry Placeholder="Username" Text="{Binding Username}" TextChanged="Entry_UsernameChanged"/>
+        <Entry Placeholder="Password" Text="{Binding Password}" TextChanged="Entry_PasswordChanged" IsPassword="true"/>
         <Button Text="Login" TextColor="White" BackgroundColor="#2ecc71" Command="{Binding LoginCommand}"/>
     </StackLayout>
 

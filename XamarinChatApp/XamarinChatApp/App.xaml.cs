@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 using Xamarin.Forms;
+using XamarinChatApp.ViewModels;
 
 namespace XamarinChatApp
 {
@@ -34,20 +35,33 @@ namespace XamarinChatApp
 
     public static class ViewModelLocator
     {
-        static MessagesViewModel VM;
+        static MessagesViewModel MessageVM;
+        static LoginViewModel LoginVM;
+
         public static MessagesViewModel MessagesViewModel
         {
             get
             {
-                if (VM == null)
+                if (MessageVM == null)
                 {
-                    VM = new MessagesViewModel();
-                    VM.InitializeMock();
+                    MessageVM = new MessagesViewModel();
+                    MessageVM.InitializeMock();
                 }
-                return VM;
+                return MessageVM;
 
             }
         }
 
+        public static LoginViewModel LoginViewModel
+        {
+            get
+            {
+                if (LoginVM == null)
+                {
+                    LoginVM = new LoginViewModel();
+                }
+                return LoginVM;
+            }
+        }
     }
 }
