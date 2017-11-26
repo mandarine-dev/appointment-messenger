@@ -15,6 +15,17 @@ namespace XamarinChatApp.ViewModels
 {
     public class LoginViewModel : BaseViewModel
     {
+        public static LoginViewModel Instance
+        {
+            get
+            {
+                if (Instance != null)
+                    return Instance;
+                return Instance = new LoginViewModel();
+            }
+            private set => Instance = value;
+        }
+
         private string username;
         private string password;
 
