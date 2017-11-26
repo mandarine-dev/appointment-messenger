@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XamarinChatApp.Interfaces;
 using XamarinChatApp.Services;
 using XamarinChatApp.Views;
 
@@ -40,23 +41,23 @@ namespace XamarinChatApp.ViewModels
         {
             LoginCommand = new Command(async () => await Login(_username, _password));
 
-            GoToRegisterCommand = new Command(() =>
-            {
-                App.NavigationService.PushAsync(new RegisterPage());
-            });
+            GoToRegisterCommand = new Command(() => { App.NavigationService.PushAsync(new RegisterPage()); });
         }
 
         public async Task Login(string username, string password)
         {
-            //var notificator = DependencyService.Get<IToastNotificator>();
-
             try
             {
-                await App.AuthService.SignInWithEmailPassword(username, password);
+                var result = await App.AuthService.SignInWithEmailPassword(username, password);
+                
+                if (result != null)
+                {
+                    await App.NavigationService.PushAsync(new ChatPage());
+                }
             }
             catch (Exception e)
             {
-                //var result = await notificator.Notify(ToastNotificationType.Error, "Erreur", "Impossible de se connecter", new TimeSpan(0,0,0,3));
+                DependencyService.Get<IAlert>().ShortAlert("Impossible de se connecter");
             }
         }
 

@@ -48,9 +48,9 @@ namespace XamarinChatApp
             RegisterPage = new NavigationPage(new RegisterPage());
             ChatPage = new NavigationPage(new ChatPage());
 
-            MainPage = ChatPage;
+            MainPage = LoginPage;
 
-            NavigationService.CurrentPage = ChatPage;
+            NavigationService.CurrentPage = LoginPage;
         }
 
         protected override void OnStart()
