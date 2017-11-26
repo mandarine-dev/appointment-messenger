@@ -64,7 +64,7 @@ namespace XamarinChatApp.ViewModels
 
                 if (result != null)
                 {
-                    await App.NavigationService.PushAsync(new LoginPage());
+                    await App.NavigationService.PopAsync();
                     DependencyService.Get<IAlert>().ShortAlert("Utilisateur inscrit !");
                 }
             }

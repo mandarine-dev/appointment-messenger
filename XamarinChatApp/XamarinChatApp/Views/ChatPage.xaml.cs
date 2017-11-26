@@ -16,7 +16,6 @@ namespace XamarinChatApp.Views
             App.MessagesViewModel.Messages.CollectionChanged += OnMessageSent;
 
             App.MessagesViewModel.InitializeMock();
-            Debug.WriteLine("Messages count: " + App.MessagesViewModel.Messages.Count);
         }
 
         void OnMessageSent(object sender, NotifyCollectionChangedEventArgs e)
