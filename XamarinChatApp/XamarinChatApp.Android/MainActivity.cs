@@ -11,6 +11,7 @@ using Android.Gms.Common;
 using Firebase.Messaging;
 using Firebase.Iid;
 using Android.Util;
+using ImageCircle.Forms.Plugin.Droid;
 using Xamarin.Forms;
 
 namespace XamarinChatApp.Droid
@@ -26,6 +27,7 @@ namespace XamarinChatApp.Droid
             base.OnCreate(bundle);
 
             Forms.Init(this, bundle);
+            ImageCircleRenderer.Init();
 
             LoadApplication(new App());
         }

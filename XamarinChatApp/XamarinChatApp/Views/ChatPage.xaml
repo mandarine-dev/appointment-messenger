@@ -2,9 +2,12 @@
 <ContentPage 
 		xmlns="http://xamarin.com/schemas/2014/forms" 
 		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-		x:Class="XamarinChatApp.ChatPage" 
+		x:Class="XamarinChatApp.Views.ChatPage" 
 		xmlns:local="clr-namespace:XamarinChatApp;assembly=XamarinChatApp"
-        BindingContext="{x:Static local:ViewModelLocator.MessagesViewModel}">
+		xmlns:vm="clr-namespace:XamarinChatApp.ViewModels;assembly=XamarinChatApp">
+    <ContentPage.BindingContext>
+        <vm:MessagesViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:MessageDataTemplateSelector x:Key="MessageTemplateSelector"/>

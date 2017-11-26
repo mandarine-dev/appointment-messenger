@@ -1,32 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System.Collections.Specialized;
+using System.Diagnostics;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XamarinChatApp.ViewModels;
 
-namespace XamarinChatApp
+namespace XamarinChatApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ChatPage : ContentPage
+    public partial class ChatPage
     {
-        public MessagesViewModel VM;
+        public readonly MessagesViewModel Vm;
 
         public ChatPage()
         {
             InitializeComponent();
-            BindingContext = VM = new MessagesViewModel();
+            Vm = new MessagesViewModel();
 
-            VM.Messages.CollectionChanged += OnMessageSent;
+            Vm.Messages.CollectionChanged += OnMessageSent;
+
+            Vm.InitializeMock();
+            Debug.WriteLine("Messages count: " + Vm.Messages.Count);
         }
 
         void OnMessageSent(object sender, NotifyCollectionChangedEventArgs e)
         {
-            Message target = VM.Messages[VM.Messages.Count - 1];
+            Message target = Vm.Messages[Vm.Messages.Count - 1];
             MessagesListView.ScrollTo(target, ScrollToPosition.End, true);
         }
 

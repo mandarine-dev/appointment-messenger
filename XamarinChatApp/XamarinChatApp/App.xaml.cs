@@ -5,16 +5,17 @@ using System.Text;
 
 using Xamarin.Forms;
 using XamarinChatApp.ViewModels;
+using XamarinChatApp.Views;
 
 namespace XamarinChatApp
 {
-    public partial class App : Application
+    public partial class App
     {
         public App()
         {
             InitializeComponent();
 
-            MainPage = new XamarinChatApp.LoginPage();
+            MainPage = new ChatPage();
         }
 
         protected override void OnStart()
@@ -30,38 +31,6 @@ namespace XamarinChatApp
         protected override void OnResume()
         {
             // Handle when your app resumes
-        }
-    }
-
-    public static class ViewModelLocator
-    {
-        static MessagesViewModel MessageVM;
-        static LoginViewModel LoginVM;
-
-        public static MessagesViewModel MessagesViewModel
-        {
-            get
-            {
-                if (MessageVM == null)
-                {
-                    MessageVM = new MessagesViewModel();
-                    MessageVM.InitializeMock();
-                }
-                return MessageVM;
-
-            }
-        }
-
-        public static LoginViewModel LoginViewModel
-        {
-            get
-            {
-                if (LoginVM == null)
-                {
-                    LoginVM = new LoginViewModel();
-                }
-                return LoginVM;
-            }
         }
     }
 }

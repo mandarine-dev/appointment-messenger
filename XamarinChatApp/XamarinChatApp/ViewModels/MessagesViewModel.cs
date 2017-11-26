@@ -10,10 +10,21 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace XamarinChatApp
+namespace XamarinChatApp.ViewModels
 {
     public class MessagesViewModel : BaseViewModel
     {
+        public static MessagesViewModel Instance
+        {
+            get
+            {
+                if (Instance != null)
+                    return Instance;
+                return Instance = new MessagesViewModel();
+            }
+            private set => Instance = value;
+        }
+
         public ObservableRangeCollection<Message> Messages { get; set; }
 
         string _OutGoingText = string.Empty;
@@ -56,5 +67,6 @@ namespace XamarinChatApp
             Messages.Add(new Message { Text = "Sounds like a plan. \uD83D\uDE0E", IsIncoming = false, MessageDateTime = DateTime.Now.AddMinutes(-23) });
             Messages.Add(new Message { Text = "\uD83D\uDE48 \uD83D\uDE49 \uD83D\uDE49", IsIncoming = false, MessageDateTime = DateTime.Now.AddMinutes(-23) });
         }
+
     }
 }
