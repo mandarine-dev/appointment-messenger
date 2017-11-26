@@ -35,36 +35,4 @@ namespace XamarinChatApp
             // Handle when your app resumes
         }
     }
-
-    public static class ViewModelLocator
-    {
-        static MessagesViewModel MessageVM;
-        static LoginViewModel LoginVM;
-
-        public static MessagesViewModel MessagesViewModel
-        {
-            get
-            {
-                if (MessageVM == null)
-                {
-                    MessageVM = new MessagesViewModel();
-                    MessageVM.InitializeMock();
-                }
-                return MessageVM;
-
-            }
-        }
-
-        public static LoginViewModel LoginViewModel
-        {
-            get
-            {
-                if (LoginVM == null)
-                {
-                    LoginVM = new LoginViewModel();
-                }
-                return LoginVM;
-            }
-        }
-    }
 }
