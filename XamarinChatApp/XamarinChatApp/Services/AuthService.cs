@@ -13,9 +13,6 @@ namespace XamarinChatApp.Services
     {
         private readonly FirebaseAuthProvider _authProvider = new FirebaseAuthProvider(new FirebaseConfig("AIzaSyAtAWqNNAJKxwZ0zoU0p1Nseh2O5HN1EJE"));
 
-        //public IFirebaseAuth FirebaseAuth { get; }
-
-        //public IFirebaseUser CurrentUser { get; }
         public FirebaseAuthLink CurrentAuth { get; set; }
 
         public AuthService() { }
@@ -24,5 +21,9 @@ namespace XamarinChatApp.Services
 
         public async Task<FirebaseAuthLink> SignInWithEmailPassword(string email, string password) => await _authProvider.SignInWithEmailAndPasswordAsync(email, password);
 
+        public bool IsLoggedIn()
+        {
+            return CurrentAuth != null;
+        }
     }
 }

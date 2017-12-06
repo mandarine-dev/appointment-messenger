@@ -23,7 +23,7 @@ namespace XamarinChatApp.Models
             set => SetProperty(ref _sentAt, value);
         }
 
-        //public string MessageTimeDisplay => SentAt.Humanize();
+        //public string SentAtFormatted => SentAt.Humanize();
 
         private string _sender;
         [JsonProperty("sender")]

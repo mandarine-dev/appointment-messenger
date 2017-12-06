@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -27,13 +28,9 @@ namespace XamarinChatApp.ViewModels
 
         public ICommand SendCommand { get; set; }
 
-        private ChildQuery _query;
-
         public MessagesViewModel()
         {
             Messages = new ObservableCollection<Message>();
-
-            _query = App.MessageService.GetQuery();
 
             SendCommand = new Command(() =>
             {
@@ -44,13 +41,10 @@ namespace XamarinChatApp.ViewModels
                     Sender = App.AuthService.CurrentAuth.User.LocalId
                 };
 
-                // TODO: Here, send message to Database
                 // Sent the new message to Firebase
-                _query.PostAsync(message).Wait();
+                App.MessageService.SendMessage(message);
 
-                // Put message to the list
-                Messages.Add(message);
-
+                // Clear input text
                 OutGoingText = string.Empty;
             });
         }
@@ -64,19 +58,6 @@ namespace XamarinChatApp.ViewModels
         //    Messages.Add(new Message { Text = "Sounds like a plan. \uD83D\uDE0E", IsIncoming = false, SentAt = DateTime.Now.AddMinutes(-23) });
         //    Messages.Add(new Message { Text = "\uD83D\uDE48 \uD83D\uDE49 \uD83D\uDE49", IsIncoming = false, SentAt = DateTime.Now.AddMinutes(-23) });
         //}
-
-        public void LoadMessages()
-        {
-            var _observable = _query
-                .OrderBy("sentAt")
-                .WithAuth(App.AuthService.CurrentAuth.FirebaseToken)
-                .AsObservable<Message>();
-
-            var _subscription = _observable.Subscribe(message =>
-            {
-                var test = "";
-            });
-        }
 
     }
 }

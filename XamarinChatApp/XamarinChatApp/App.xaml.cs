@@ -45,13 +45,21 @@ namespace XamarinChatApp
             RegisterViewModel = new RegisterViewModel();
 
             // Init Pages
-            LoginPage = new NavigationPage(new LoginPage());
-            //RegisterPage = new RegisterPage();
-            //ChatPage = new NavigationPage(new ChatPage());
-
-            MainPage = LoginPage;
-
-            NavigationService.CurrentPage = LoginPage;
+            if (AuthService.IsLoggedIn())
+            {
+                if (ChatPage != null)
+                {
+                    ChatPage = new NavigationPage(new ChatPage());
+                }
+                MainPage = ChatPage;
+                NavigationService.CurrentPage = ChatPage;
+            }
+            else
+            {
+                LoginPage = new NavigationPage(new LoginPage());
+                MainPage = LoginPage;
+                NavigationService.CurrentPage = LoginPage;
+            }
         }
 
         protected override void OnStart()
@@ -62,11 +70,19 @@ namespace XamarinChatApp
         protected override void OnSleep()
         {
             // Handle when your app sleeps
+            MessageService.ReleaseMemory();
         }
 
         protected override void OnResume()
         {
             // Handle when your app resumes
+            
+            // Clear messages history
+            MessagesViewModel.Messages.Clear();
+            // Reload messages
+            MessageService.Subscription = MessageService
+                .SyncInRealtime()
+                .Subscribe(data => MessagesViewModel.Messages.Add(data.Object));
         }
     }
 }
