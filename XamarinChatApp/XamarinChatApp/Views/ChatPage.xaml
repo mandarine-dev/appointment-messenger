@@ -4,11 +4,12 @@
 		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
 		x:Class="XamarinChatApp.Views.ChatPage" 
 		xmlns:local="clr-namespace:XamarinChatApp;assembly=XamarinChatApp"
-        Title="Chat"
+		xmlns:customCells="clr-namespace:XamarinChatApp.CustomCells;assembly=XamarinChatApp"
+		Title="Chat"
         BindingContext="{x:Static local:App.MessagesViewModel}">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <local:MessageDataTemplateSelector x:Key="MessageTemplateSelector"/>
+            <customCells:MessageDataTemplateSelector x:Key="MessageTemplateSelector"/>
         </ResourceDictionary>
     </ContentPage.Resources>
     <Grid RowSpacing="0" ColumnSpacing="0">

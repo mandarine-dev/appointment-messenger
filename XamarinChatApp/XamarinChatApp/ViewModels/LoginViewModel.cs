@@ -52,6 +52,7 @@ namespace XamarinChatApp.ViewModels
                 
                 if (result != null)
                 {
+                    App.AuthService.CurrentAuth = result;
                     await App.NavigationService.PushAsync(new ChatPage());
                 }
             }

@@ -1,36 +1,38 @@
-﻿using Humanizer;
+﻿using System;
+using Humanizer;
 using MvvmHelpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
 
-namespace XamarinChatApp
+namespace XamarinChatApp.Models
 {
     public class Message : ObservableObject
     {
-        string text;
+        string _text;
+        [JsonProperty("text")]
         public string Text
         {
-            get { return text; }
-            set { SetProperty(ref text, value); }
+            get => _text;
+            set => SetProperty(ref _text, value);
         }
 
-        DateTime messageDateTime;
-        public DateTime MessageDateTime
+        DateTime _sentAt;
+        [JsonProperty("sentAt")]
+        public DateTime SentAt
         {
-            get { return messageDateTime; }
-            set { SetProperty(ref messageDateTime, value); }
+            get => _sentAt;
+            set => SetProperty(ref _sentAt, value);
         }
 
-        public string MessageTimeDisplay => MessageDateTime.Humanize();
-        bool isIncoming;
+        //public string MessageTimeDisplay => SentAt.Humanize();
 
-        public bool IsIncoming
+        private string _sender;
+        [JsonProperty("sender")]
+        public string Sender
         {
-            get { return isIncoming; }
-            set { SetProperty(ref isIncoming, value); }
+            get => _sender;
+            set => SetProperty(ref _sender, value);
         }
+
+        public bool IsIncoming() => App.AuthService.CurrentAuth.User.LocalId == _sender;
     }
 }

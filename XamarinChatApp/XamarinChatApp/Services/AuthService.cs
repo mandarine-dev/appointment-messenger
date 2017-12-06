@@ -11,11 +11,12 @@ namespace XamarinChatApp.Services
 {
     public class AuthService
     {
-        private FirebaseAuthProvider _authProvider = new FirebaseAuthProvider(new FirebaseConfig("AIzaSyAtAWqNNAJKxwZ0zoU0p1Nseh2O5HN1EJE"));
+        private readonly FirebaseAuthProvider _authProvider = new FirebaseAuthProvider(new FirebaseConfig("AIzaSyAtAWqNNAJKxwZ0zoU0p1Nseh2O5HN1EJE"));
 
-        public IFirebaseAuth FirebaseAuth { get; }
+        //public IFirebaseAuth FirebaseAuth { get; }
 
-        public IFirebaseUser CurrentUser { get; }
+        //public IFirebaseUser CurrentUser { get; }
+        public FirebaseAuthLink CurrentAuth { get; set; }
 
         public AuthService() { }
 

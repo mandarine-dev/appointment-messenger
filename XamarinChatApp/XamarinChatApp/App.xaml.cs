@@ -11,6 +11,14 @@ namespace XamarinChatApp
 {
     public partial class App
     {
+        #region Services inner PCL
+
+        public static readonly AuthService AuthService = new AuthService();
+        public static readonly NavigationService NavigationService = new NavigationService();
+        public static readonly MessageService MessageService = new MessageService();
+
+        #endregion
+
         #region View models
 
         public static LoginViewModel LoginViewModel { get; private set; }
@@ -27,13 +35,6 @@ namespace XamarinChatApp
 
         #endregion
 
-        #region Services inner PCL
-
-        public static readonly AuthService AuthService = new AuthService();
-        public static readonly NavigationService NavigationService = new NavigationService();
-
-        #endregion
-
         public App()
         {
             InitializeComponent();
@@ -45,8 +46,8 @@ namespace XamarinChatApp
 
             // Init Pages
             LoginPage = new NavigationPage(new LoginPage());
-            RegisterPage = new NavigationPage(new RegisterPage());
-            ChatPage = new NavigationPage(new ChatPage());
+            //RegisterPage = new RegisterPage();
+            //ChatPage = new NavigationPage(new ChatPage());
 
             MainPage = LoginPage;
 

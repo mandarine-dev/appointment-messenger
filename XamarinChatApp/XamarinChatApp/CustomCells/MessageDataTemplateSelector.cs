@@ -1,29 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
+using XamarinChatApp.Models;
 
-namespace XamarinChatApp
+namespace XamarinChatApp.CustomCells
 {
     public class MessageDataTemplateSelector : DataTemplateSelector
     {
-        private readonly DataTemplate incomingDataTemplate;
-        private readonly DataTemplate outgoingDataTemplate;
+        private readonly DataTemplate _incomingDataTemplate;
+        private readonly DataTemplate _outgoingDataTemplate;
 
         public MessageDataTemplateSelector()
         {
-            incomingDataTemplate = new DataTemplate(typeof(IncomingViewCell));
-            outgoingDataTemplate = new DataTemplate(typeof(OutgoingViewCell));
+            _incomingDataTemplate = new DataTemplate(typeof(IncomingViewCell));
+            _outgoingDataTemplate = new DataTemplate(typeof(OutgoingViewCell));
         }
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
-            Message messageVm = item as Message;
-            if (messageVm == null)
+            if (!(item is Message messageVm))
                 return null;
-            return messageVm.IsIncoming ? incomingDataTemplate : outgoingDataTemplate;
+            return messageVm.IsIncoming() ? _incomingDataTemplate : _outgoingDataTemplate;
         }
     }
 }
