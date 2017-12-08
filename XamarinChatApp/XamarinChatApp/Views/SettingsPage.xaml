@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XamarinChatApp.Views.SettingsPage"
+             xmlns:local="clr-namespace:XamarinChatApp"
+             Title="Préférences"
+             BindingContext="{x:Static local:App.SettingsViewModel}">
+
+    <StackLayout Spacing="20" Padding="20" VerticalOptions="Center">
+        <Entry Placeholder="Email" Text="{Binding Email}"/>
+        <Entry Placeholder="Prénom" Text="{Binding Firstname}"/>
+        <Entry Placeholder="Nom" Text="{Binding Lastname}"/>
+        <Button Text="Sauvegarder" TextColor="White" BackgroundColor="#2ecc71" Command="{Binding SaveUserCommand}"/>
+        <!--<Label Text="Not registered ?" HorizontalTextAlignment="Center" TextColor="#039be5">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding GoToRegisterCommand}"></TapGestureRecognizer>
+            </Label.GestureRecognizers>
+        </Label>-->
+    </StackLayout>
+    
+</ContentPage>

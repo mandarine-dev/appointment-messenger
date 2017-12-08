@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 using XamarinChatApp.Models;
+using XamarinChatApp.Views;
 
 namespace XamarinChatApp.ViewModels
 {
@@ -27,6 +28,8 @@ namespace XamarinChatApp.ViewModels
         }
 
         public ICommand SendCommand { get; set; }
+        public ICommand OpenSettings { get; set; }
+        public ICommand ExitApp { get; set; }
 
         public MessagesViewModel()
         {
@@ -46,6 +49,16 @@ namespace XamarinChatApp.ViewModels
 
                 // Clear input text
                 OutGoingText = string.Empty;
+            });
+
+            OpenSettings = new Command(() =>
+            {
+                App.NavigationService.PushAsync(new SettingsPage());
+            });
+
+            ExitApp = new Command(() =>
+            {
+
             });
         }
 

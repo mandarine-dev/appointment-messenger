@@ -24,6 +24,7 @@ namespace XamarinChatApp
         public static LoginViewModel LoginViewModel { get; private set; }
         public static MessagesViewModel MessagesViewModel { get; private set; }
         public static RegisterViewModel RegisterViewModel { get; private set; }
+        public static SettingsViewModel SettingsViewModel { get; private set; }
 
         #endregion
 
@@ -43,7 +44,8 @@ namespace XamarinChatApp
             LoginViewModel = new LoginViewModel();
             MessagesViewModel = new MessagesViewModel();
             RegisterViewModel = new RegisterViewModel();
-
+            SettingsViewModel = new SettingsViewModel();
+            
             // Init Pages
             if (AuthService.IsLoggedIn())
             {

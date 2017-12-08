@@ -8,11 +8,18 @@
 		Title="Chat"
         NavigationPage.HasBackButton="False"
         BindingContext="{x:Static local:App.MessagesViewModel}">
+    
     <ContentPage.Resources>
         <ResourceDictionary>
             <customCells:MessageDataTemplateSelector x:Key="MessageTemplateSelector"/>
         </ResourceDictionary>
     </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Settings" Order="Secondary" Icon="settings.png" Text="Préférences" Priority="0" Command="{Binding OpenSettings}"/>
+        <ToolbarItem Name="Disconnect" Order="Secondary" Icon="disconnect.png" Text="Déconnexion" Priority="1" Command="{Binding ExitApp}"/>
+    </ContentPage.ToolbarItems>
+    
     <Grid RowSpacing="0" ColumnSpacing="0">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />

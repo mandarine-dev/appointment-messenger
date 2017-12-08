@@ -12,7 +12,7 @@ namespace XamarinChatApp.Views
         public ChatPage()
         {
             InitializeComponent();
-
+            
             App.MessagesViewModel.Messages.CollectionChanged += OnMessageSent;
             // Synchronize App with Firebase and continue to listen any changes
             App.MessageService.Subscription = App.MessageService
