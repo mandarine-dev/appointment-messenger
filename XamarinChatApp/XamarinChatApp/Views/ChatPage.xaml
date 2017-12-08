@@ -6,6 +6,7 @@
 		xmlns:local="clr-namespace:XamarinChatApp;assembly=XamarinChatApp"
 		xmlns:customCells="clr-namespace:XamarinChatApp.CustomCells;assembly=XamarinChatApp"
 		Title="Chat"
+        NavigationPage.HasBackButton="False"
         BindingContext="{x:Static local:App.MessagesViewModel}">
     <ContentPage.Resources>
         <ResourceDictionary>

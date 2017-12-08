@@ -75,7 +75,7 @@ namespace XamarinChatApp
         protected override void OnResume()
         {
             // Handle when your app resumes
-            
+
             // Clear messages history
             MessagesViewModel.Messages.Clear();
             // Reload messages

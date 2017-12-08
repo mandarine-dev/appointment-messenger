@@ -49,15 +49,5 @@ namespace XamarinChatApp.ViewModels
             });
         }
 
-        //public void InitializeMock()
-        //{
-        //    Messages.Add(new Message { Text = "Hi Squirrel! \uD83D\uDE0A", IsIncoming = true, SentAt = DateTime.Now.AddMinutes(-25) });
-        //    Messages.Add(new Message { Text = "Hi Baboon, How are you? \uD83D\uDE0A", IsIncoming = false, SentAt = DateTime.Now.AddMinutes(-24) });
-        //    Messages.Add(new Message { Text = "We've a party at Mandrill's. Would you like to join? We would love to have you there! \uD83D\uDE01", IsIncoming = true, SentAt = DateTime.Now.AddMinutes(-23) });
-        //    Messages.Add(new Message { Text = "You will love it. Don't miss.", IsIncoming = true, SentAt = DateTime.Now.AddMinutes(-23) });
-        //    Messages.Add(new Message { Text = "Sounds like a plan. \uD83D\uDE0E", IsIncoming = false, SentAt = DateTime.Now.AddMinutes(-23) });
-        //    Messages.Add(new Message { Text = "\uD83D\uDE48 \uD83D\uDE49 \uD83D\uDE49", IsIncoming = false, SentAt = DateTime.Now.AddMinutes(-23) });
-        //}
-
     }
 }
