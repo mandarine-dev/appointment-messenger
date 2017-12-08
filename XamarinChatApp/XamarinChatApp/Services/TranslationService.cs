@@ -17,15 +17,18 @@ namespace XamarinChatApp.Services
         {
             var frI18N = new Dictionary<string, string>
             {
-                {"PASSWORD_INVALID", "Mot de passe invalide"},
-                {"PASSWORD_INVALID", "Mot de passe invalide"},
+                { "PASSWORD_INVALID", "Mot de passe invalide" },
+                { "EMAIL_INVALID", "Email invalide" },
+                { "USER_CREATED", "Utilisateur inscrit" },
+                { "USER_REGISTER_FAIL", "Erreur durant l'inscription" },
+                { "LOGIN_NOT_ENABLE", "Impossible de se connecter" }
             };
             _i18N.Add("FR", frI18N);
         }
 
         public string GetTranslation(string key)
         {
-            return _i18N[CurrentLang].ContainsKey(key) ? _i18N[CurrentLang][key] : key;
+            return _i18N.ContainsKey(CurrentLang) && _i18N[CurrentLang].ContainsKey(key) ? _i18N[CurrentLang][key] : key;
         }
     }
 }
