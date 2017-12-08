@@ -7,7 +7,7 @@
              BindingContext="{x:Static local:App.LoginViewModel}">
     
     <StackLayout Spacing="20" Padding="20" VerticalOptions="Center">
-        <Entry Placeholder="Username" Text="{Binding Username}"/>
+        <Entry Placeholder="Email" Text="{Binding Email}"/>
         <Entry Placeholder="Password" Text="{Binding Password}" IsPassword="true"/>
         <Button Text="Login" TextColor="White" BackgroundColor="#2ecc71" Command="{Binding LoginCommand}"/>
         <Label Text="Not registered ?" HorizontalTextAlignment="Center" TextColor="#039be5">

@@ -7,7 +7,7 @@
              BindingContext="{x:Static local:App.RegisterViewModel}">
 
     <StackLayout Spacing="20" Padding="20" VerticalOptions="Center">
-        <Entry Placeholder="Username" Text="{Binding Username}"/>
+        <Entry Placeholder="Email" Text="{Binding Email}"/>
         <Entry Placeholder="Password" Text="{Binding Password}" IsPassword="true"/>
         <!--TODO: Check if the password is the same-->
         <Entry Placeholder="Password confirm" Text="{Binding PasswordConfirm}" IsPassword="true"/>

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Xamarin.Forms;
 using XamarinChatApp.Services;
 using XamarinChatApp.ViewModels;
@@ -13,7 +10,9 @@ namespace XamarinChatApp
     {
         #region Services inner PCL
 
+        public static readonly FirebaseService FirebaseService = new FirebaseService();
         public static readonly AuthService AuthService = new AuthService();
+        public static readonly UserService UserService = new UserService();
         public static readonly NavigationService NavigationService = new NavigationService();
         public static readonly MessageService MessageService = new MessageService();
 

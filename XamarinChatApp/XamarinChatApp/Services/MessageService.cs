@@ -14,16 +14,14 @@ namespace XamarinChatApp.Services
 {
     public class MessageService
     {
-        private readonly FirebaseClient _firebase = new FirebaseClient("https://appointment-messenger.firebaseio.com/");
+        //private readonly FirebaseClient _firebase = new FirebaseClient("https://appointment-messenger.firebaseio.com/");
         private const string Database = "messages";
 
         public IDisposable Subscription { get; set; }
 
-        public MessageService() { }
-
         private ChildQuery PrepareQuery()
         {
-            return _firebase
+            return App.FirebaseService.FirebaseClientInstance
                 .Child(Database);
             //.WithAuth(App.AuthService.CurrentAuth.FirebaseToken); // Do not uncomment this till we active the Auth requirement in Firebase
         }

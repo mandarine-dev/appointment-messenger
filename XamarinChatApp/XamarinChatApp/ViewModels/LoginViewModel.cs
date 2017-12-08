@@ -17,11 +17,11 @@ namespace XamarinChatApp.ViewModels
     public class LoginViewModel : BaseViewModel
     {
         #region Properties
-        private string _username;
-        public string Username
+        private string _email;
+        public string Email
         {
-            get => _username;
-            set => SetProperty(ref _username, value);
+            get => _email;
+            set => SetProperty(ref _email, value);
         }
 
         private string _password;
@@ -39,16 +39,16 @@ namespace XamarinChatApp.ViewModels
 
         public LoginViewModel()
         {
-            LoginCommand = new Command(async () => await Login(_username, _password));
+            LoginCommand = new Command(async () => await Login(_email, _password));
 
             GoToRegisterCommand = new Command(() => { App.NavigationService.PushAsync(new RegisterPage()); });
         }
 
-        public async Task Login(string username, string password)
+        public async Task Login(string email, string password)
         {
             try
             {
-                var result = await App.AuthService.SignInWithEmailPassword(username, password);
+                var result = await App.AuthService.SignInWithEmailPassword(email, password);
                 
                 if (result != null)
                 {

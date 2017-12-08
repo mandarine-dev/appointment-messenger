@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Specialized;
-using System.Diagnostics;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XamarinChatApp.Models;
