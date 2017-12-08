@@ -48,6 +48,12 @@ namespace XamarinChatApp.ViewModels
         {
             try
             {
+                if (!ValidatorService.IsEmailValid(_email))
+                {
+                    DependencyService.Get<IAlert>().ShortAlert(App.TranslationService.GetTranslation("EMAIL_INVALID"));
+                    return;
+                }
+
                 var result = await App.AuthService.SignInWithEmailPassword(email, password);
                 
                 if (result != null)
@@ -58,7 +64,7 @@ namespace XamarinChatApp.ViewModels
             }
             catch (Exception e)
             {
-                DependencyService.Get<IAlert>().ShortAlert("Impossible de se connecter");
+                DependencyService.Get<IAlert>().ShortAlert(App.TranslationService.GetTranslation("LOGIN_NOT_ENABLE"));
             }
         }
 

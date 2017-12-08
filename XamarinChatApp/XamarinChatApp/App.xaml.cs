@@ -15,6 +15,7 @@ namespace XamarinChatApp
         public static readonly UserService UserService = new UserService();
         public static readonly NavigationService NavigationService = new NavigationService();
         public static readonly MessageService MessageService = new MessageService();
+        public static readonly TranslationService TranslationService = new TranslationService();
 
         #endregion
 

@@ -73,13 +73,13 @@ namespace XamarinChatApp.ViewModels
             {
                 if (!ValidatorService.IsPasswordAndConfirmValid(_password, _passwordConfirm))
                 {
-                    DependencyService.Get<IAlert>().ShortAlert("Mot de passe invalide");
+                    ShowToast("PASSWORD_INVALID");
                     return;
                 }
 
                 if (!ValidatorService.IsEmailValid(_email))
                 {
-                    DependencyService.Get<IAlert>().ShortAlert("Email invalide");
+                    ShowToast("EMAIL_INVALID");
                     return;
                 }
 
@@ -88,13 +88,18 @@ namespace XamarinChatApp.ViewModels
                 if (result != null)
                 {
                     await App.NavigationService.PopAsync();
-                    DependencyService.Get<IAlert>().ShortAlert("Utilisateur inscrit !");
+                    ShowToast("USER_CREATED");
                 }
             }
             catch (Exception e)
             {
-                DependencyService.Get<IAlert>().ShortAlert("Erreur durant l'inscription");
+                ShowToast("USER_REGISTER_FAIL");
             }
+        }
+
+        private void ShowToast(string i18NKey)
+        {
+            DependencyService.Get<IAlert>().ShortAlert(App.TranslationService.GetTranslation(i18NKey));
         }
     }
 }
