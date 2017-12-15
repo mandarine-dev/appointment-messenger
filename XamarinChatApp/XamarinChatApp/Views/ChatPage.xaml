@@ -5,6 +5,7 @@
 		x:Class="XamarinChatApp.Views.ChatPage" 
 		xmlns:local="clr-namespace:XamarinChatApp;assembly=XamarinChatApp"
 		xmlns:customCells="clr-namespace:XamarinChatApp.CustomCells;assembly=XamarinChatApp"
+        xmlns:imgCircle="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
 		Title="Chat"
         NavigationPage.HasBackButton="False"
         BindingContext="{x:Static local:App.MessagesViewModel}">
@@ -38,14 +39,26 @@
 
         <!-- Entry and Send button in Row 1 -->
         <StackLayout Orientation="Horizontal" Grid.Row="1" Padding="10" BackgroundColor="#EFEFEF">
-            <Entry 
-			    HorizontalOptions="FillAndExpand" 
+            <!--<Entry 
+			    HorizontalOptions="FillAndExpand"
 				HeightRequest="25" 
 				Placeholder="Message" 
-				Text="{Binding OutGoingText}"/>
-            <Button 
-				Text="Send" 
-				Command="{Binding SendCommand}"/>
+				Text="{Binding OutGoingText}"/>-->
+            <Editor
+                HorizontalOptions="FillAndExpand"
+                HeightRequest="45"
+                Text="{Binding OutGoingText}"/>
+            <imgCircle:CircleImage
+                HeightRequest="45"
+                WidthRequest="45"
+                Aspect="AspectFill"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Source="icon_send.png">
+                <imgCircle:CircleImage.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SendCommand}" NumberOfTapsRequired="1" />
+                </imgCircle:CircleImage.GestureRecognizers>
+            </imgCircle:CircleImage>
         </StackLayout>
     </Grid>
 </ContentPage>
