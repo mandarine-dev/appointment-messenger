@@ -11,11 +11,6 @@
         <Entry Placeholder="Prénom" Text="{Binding Firstname}"/>
         <Entry Placeholder="Nom" Text="{Binding Lastname}"/>
         <Button Text="Sauvegarder" TextColor="White" BackgroundColor="#2ecc71" Command="{Binding SaveUserCommand}"/>
-        <!--<Label Text="Not registered ?" HorizontalTextAlignment="Center" TextColor="#039be5">
-            <Label.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding GoToRegisterCommand}"></TapGestureRecognizer>
-            </Label.GestureRecognizers>
-        </Label>-->
     </StackLayout>
     
 </ContentPage>

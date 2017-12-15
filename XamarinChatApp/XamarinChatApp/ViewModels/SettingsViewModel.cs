@@ -1,4 +1,5 @@
-﻿using MvvmHelpers;
+﻿using Firebase.Xamarin.Auth;
+using MvvmHelpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace XamarinChatApp.ViewModels
 {
     public class SettingsViewModel : BaseViewModel
     {
+        User user = new User();
         #region Properties
         private string _email;
         public string Email
@@ -40,7 +42,7 @@ namespace XamarinChatApp.ViewModels
 
         public SettingsViewModel()
         {
-            SaveUserCommand = new Command(() => App.UserService.SaveUserData());
+            SaveUserCommand = new Command(() => App.UserService.SaveUserData(user));
         }
 
     }
