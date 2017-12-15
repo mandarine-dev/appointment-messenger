@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Firebase.Xamarin.Database.Query;
 using Firebase.Xamarin.Auth;
 using Firebase.Xamarin.Database;
+using System.Dynamic;
+using XamarinChatApp.Firebase.Auth;
 
 namespace XamarinChatApp.Services
 {
@@ -14,39 +16,44 @@ namespace XamarinChatApp.Services
         private const string Table = "users";
         private FirebaseClient firebase = App.FirebaseService.FirebaseClientInstance;
 
+        private CustomUser user;
+        public CustomUser User { get => user; set => user = value; }
 
-        public void CreateUserDetails()
+        public async void LoadCurrentUser()
         {
-            //var firebase = App.FirebaseService.FirebaseClientInstance;
-            //firebase.Child(string.Join("/", Table, "KeyTest")).PostAsync(new
-            //{
-            //    Username = "UsernameTest"
-            //}).Wait();
+            user = await firebase
+                 .Child("users")
+                 .Child(App.AuthService.CurrentAuth.User.LocalId)
+                 .OnceSingleAsync<CustomUser>();
         }
 
-        public void GetCurrentUserInfos()
+        public void SaveUserData(CustomUser user)
         {
-            //User user = new User();
-            var userFromFirebase = firebase
-                .Child("users")
-                .Child(App.AuthService.CurrentAuth.User.LocalId);
-            //App.AuthService.CurrentAuth.User.LocalId
+            this.user = user;
 
-            //return user;
-        }
-
-        public void SaveUserData(User user)
-        {
             firebase
                 .Child("users")
                 .Child(App.AuthService.CurrentAuth.User.LocalId)
-                .PutAsync(new User
+                .PutAsync(new CustomUser
                 {
-                    FirstName = user.FirstName,
-                    LastName = user.LastName,
-                    PhotoUrl = "https://assets.entrepreneur.com/content/3x2/1300/20150406145944-dos-donts-taking-perfect-linkedin-profile-picture-selfie-mobile-camera-2.jpeg" // user.PhotoUrl
+                    Firstname = user.Firstname,
+                    Lastname = user.Lastname,
+                    DisplayName = "test",
+                    ProfilPicture = user.ProfilPicture
                 }
             ).Wait();
+
+            LoadCurrentUser();
         }
+
+        //public void UploadProfilePicture(byte[] bytes)
+        //{
+        //    dynamic picture = new ExpandoObject();
+
+        //    firebase
+        //        .Child("users")
+        //        .Child(App.AuthService.CurrentAuth.User.LocalId)
+        //        .PutAsync(picture.Bytes = bytes);
+        //}
     }
 }

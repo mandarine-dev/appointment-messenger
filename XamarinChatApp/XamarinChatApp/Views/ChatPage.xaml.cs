@@ -12,7 +12,10 @@ namespace XamarinChatApp.Views
         public ChatPage()
         {
             InitializeComponent();
-            
+
+            // load current user in user object from userservice
+            App.UserService.LoadCurrentUser();
+
             App.MessagesViewModel.Messages.CollectionChanged += OnMessageSent;
             // Synchronize App with Firebase and continue to listen any changes
             App.MessageService.Subscription = App.MessageService
@@ -22,8 +25,11 @@ namespace XamarinChatApp.Views
 
         void OnMessageSent(object sender, NotifyCollectionChangedEventArgs e)
         {
-            Message target = App.MessagesViewModel.Messages[App.MessagesViewModel.Messages.Count - 1];
-            MessagesListView.ScrollTo(target, ScrollToPosition.End, true);
+            if (App.MessagesViewModel.Messages.Count > 0)
+            {
+                Message target = App.MessagesViewModel.Messages[App.MessagesViewModel.Messages.Count - 1];
+                MessagesListView.ScrollTo(target, ScrollToPosition.End, true);
+            }
         }
 
         void OnMessageSelected(object sender, SelectedItemChangedEventArgs e)

@@ -10,7 +10,7 @@ namespace XamarinChatApp.Firebase.Auth
 {
     public interface IFirebaseAuth
     {
-        IFirebaseUser CurrentUser { get; }
+        CustomUser CurrentUser { get; }
 
         Task<FirebaseAuthLink> CreateEmailPasswordUser(string email, string password);
 
