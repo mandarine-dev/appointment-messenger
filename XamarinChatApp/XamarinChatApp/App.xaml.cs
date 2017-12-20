@@ -45,7 +45,7 @@ namespace XamarinChatApp
             MessagesViewModel = new MessagesViewModel();
             RegisterViewModel = new RegisterViewModel();
             SettingsViewModel = new SettingsViewModel();
-            
+
             // Init Pages
             if (AuthService.IsLoggedIn())
             {

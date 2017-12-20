@@ -1,11 +1,14 @@
-﻿using System;
+﻿using Firebase.Xamarin.Auth;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XamarinChatApp.Firebase.Auth;
 
 namespace XamarinChatApp.Views
 {
@@ -16,9 +19,21 @@ namespace XamarinChatApp.Views
         {
             InitializeComponent();
 
-            App.SettingsViewModel.Email = App.AuthService.CurrentAuth.User.Email;
-            App.SettingsViewModel.Firstname = App.AuthService.CurrentAuth.User.FirstName;
-            App.SettingsViewModel.Lastname = App.AuthService.CurrentAuth.User.LastName;
+            // get current user info from database
+            CustomUser user = App.UserService.User;
+
+            if (user != null)
+            {
+                ImageSource image;
+
+                Stream stream = new MemoryStream(user.ProfilPicture);
+                image = ImageSource.FromStream(() => stream);
+
+                App.SettingsViewModel.ProfilPicture = image;
+                App.SettingsViewModel.Firstname = user.Firstname != null ? user.Firstname : "";
+                App.SettingsViewModel.Lastname = user.Lastname != null ? user.Lastname : "";
+            }
+            
         }
     }
 }

@@ -41,9 +41,10 @@
     <Compile Include="Constants.cs" />
     <Compile Include="CustomCells\MessageDataTemplateSelector.cs" />
     <Compile Include="Firebase\Auth\IFirebaseAuth.cs" />
-    <Compile Include="Firebase\Auth\FirebaseUser.cs" />
+    <Compile Include="Firebase\Auth\CustomUser.cs" />
     <Compile Include="Firebase\Common\ErrorCodes.cs" />
     <Compile Include="Interfaces\IAlert.cs" />
+    <Compile Include="Interfaces\IPicturePicker.cs" />
     <Compile Include="Services\AuthService.cs" />
     <Compile Include="Services\FirebaseService.cs" />
     <Compile Include="Services\MessageService.cs" />

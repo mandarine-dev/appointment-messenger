@@ -7,10 +7,12 @@
              BindingContext="{x:Static local:App.SettingsViewModel}">
 
     <StackLayout Spacing="20" Padding="20" VerticalOptions="Center">
-        <Entry Placeholder="Email" Text="{Binding Email}"/>
+        <Image Source="{Binding ProfilPicture}"/>
+        <Button Text="Ajouter une image" TextColor="White" BackgroundColor="#2ecc71" Command="{Binding UploadImageCommand}"/>
         <Entry Placeholder="Prénom" Text="{Binding Firstname}"/>
         <Entry Placeholder="Nom" Text="{Binding Lastname}"/>
         <Button Text="Sauvegarder" TextColor="White" BackgroundColor="#2ecc71" Command="{Binding SaveUserCommand}"/>
+        
     </StackLayout>
     
 </ContentPage>
