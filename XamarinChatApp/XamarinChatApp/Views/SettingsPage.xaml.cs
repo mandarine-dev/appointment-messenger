@@ -26,7 +26,7 @@ namespace XamarinChatApp.Views
             {
                 ImageSource image;
 
-                Stream stream = new MemoryStream(user.ProfilPicture);
+                Stream stream = user.ProfilPicture != null ? new MemoryStream(user.ProfilPicture) : new MemoryStream();
                 image = ImageSource.FromStream(() => stream);
 
                 App.SettingsViewModel.ProfilPicture = image;

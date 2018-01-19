@@ -27,6 +27,14 @@ namespace XamarinChatApp.Services
                  .OnceSingleAsync<CustomUser>();
         }
 
+        public async Task<CustomUser> LoadUserDetails(string userId)
+        {
+            return await firebase
+                 .Child("users")
+                 .Child(userId)
+                 .OnceSingleAsync<CustomUser>();
+        }
+
         public void SaveUserData(CustomUser user)
         {
             this.user = user;
@@ -38,7 +46,7 @@ namespace XamarinChatApp.Services
                 {
                     Firstname = user.Firstname,
                     Lastname = user.Lastname,
-                    DisplayName = "test",
+                    DisplayName = user.DisplayName,
                     ProfilPicture = user.ProfilPicture
                 }
             ).Wait();

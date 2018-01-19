@@ -17,14 +17,14 @@ namespace XamarinChatApp.ViewModels
     public class LoginViewModel : BaseViewModel
     {
         #region Properties
-        private string _email;
+        private string _email = "admin@admin.fr";
         public string Email
         {
             get => _email;
             set => SetProperty(ref _email, value);
         }
 
-        private string _password;
+        private string _password = "adminadmin";
         public string Password
         {
             get => _password;

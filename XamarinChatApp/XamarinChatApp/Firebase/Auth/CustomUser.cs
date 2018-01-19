@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace XamarinChatApp.Firebase.Auth
 {
@@ -19,5 +21,13 @@ namespace XamarinChatApp.Firebase.Auth
         public string Email { get; set; }
 
         public CustomUser() { }
+
+        public ImageSource ConvertImageByteToStream()
+        {
+            return ImageSource.FromStream(() =>
+            {
+                return ProfilPicture != null ? new MemoryStream(ProfilPicture) : new MemoryStream();
+            });
+        }
     }
 }

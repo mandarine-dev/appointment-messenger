@@ -58,7 +58,7 @@ namespace XamarinChatApp.ViewModels
                 {
                     Firstname = _firstname,
                     Lastname = _lastname,
-                    Email = "admin@admin.fr",
+                    Email = App.AuthService.CurrentAuth.User.Email,
                     ProfilPicture = ImageBytes
                 });
             });

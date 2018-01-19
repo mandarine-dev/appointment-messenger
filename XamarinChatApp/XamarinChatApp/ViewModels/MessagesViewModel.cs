@@ -62,5 +62,10 @@ namespace XamarinChatApp.ViewModels
             });
         }
 
+        public int CountMessages()
+        {
+            return Messages.Count;
+        }
+
     }
 }

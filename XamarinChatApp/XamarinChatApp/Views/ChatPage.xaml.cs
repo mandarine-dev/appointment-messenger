@@ -20,7 +20,12 @@ namespace XamarinChatApp.Views
             // Synchronize App with Firebase and continue to listen any changes
             App.MessageService.Subscription = App.MessageService
                 .SyncInRealtime()
-                .Subscribe(data => App.MessagesViewModel.Messages.Add(data.Object));
+                .Subscribe(data =>
+                {
+                    App.MessagesViewModel.Messages.Add(data.Object);
+                    var userDetails = App.UserService.LoadUserDetails(data.Object.Sender);
+                    App.MessagesViewModel.Messages[App.MessagesViewModel.CountMessages() - 1].SenderDetails = userDetails.Result;
+                });
         }
 
         void OnMessageSent(object sender, NotifyCollectionChangedEventArgs e)

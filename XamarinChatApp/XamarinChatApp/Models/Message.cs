@@ -2,6 +2,11 @@
 using Humanizer;
 using MvvmHelpers;
 using Newtonsoft.Json;
+using XamarinChatApp.Firebase.Auth;
+using Xamarin.Forms;
+using System.IO;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace XamarinChatApp.Models
 {
@@ -34,5 +39,22 @@ namespace XamarinChatApp.Models
         }
 
         public bool IsIncoming() => App.AuthService.CurrentAuth.User.LocalId == _sender;
+
+        private CustomUser _senderDetails;
+        public CustomUser SenderDetails
+        {
+            get => _senderDetails;
+            set {
+                _senderDetails = value;
+                _avatar = _senderDetails.ConvertImageByteToStream();
+            }
+        }
+
+        private ImageSource _avatar;
+        public ImageSource Avatar
+        {
+            get => _avatar;
+            set => SetProperty(ref _avatar, value);
+        }
     }
 }

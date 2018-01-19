@@ -22,10 +22,11 @@
                 BorderColor="#03A9F4"
                 Aspect="AspectFill"
                 HorizontalOptions="Center"
-                VerticalOptions="Center">
-            <imgCircle:CircleImage.Source>
-                <UriImageSource Uri="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Portrait_Of_A_Baboon.jpg/220px-Portrait_Of_A_Baboon.jpg"></UriImageSource>
-            </imgCircle:CircleImage.Source>
+                VerticalOptions="Center"
+                Image.Source="Avatar">
+            <!--<imgCircle:CircleImage.Source>
+                <UriImageSource  Uri="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Portrait_Of_A_Baboon.jpg/220px-Portrait_Of_A_Baboon.jpg"></UriImageSource>
+            </imgCircle:CircleImage.Source>-->
         </imgCircle:CircleImage>
         <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="#03A9F4">
             <Frame.HasShadow>
@@ -37,6 +38,6 @@
             </StackLayout>
         </Frame>
 
-        <Label FontSize="Micro" Grid.Row="1" Grid.Column="1" Text="{Binding SentAt, StringFormat='{0:MM/dd/yyyy hh:mm tt}'}" TextColor="Gray"></Label>
+        <Label FontSize="Micro" Grid.Row="1" Grid.Column="1" Text="{Binding SentAt, StringFormat='{0:dd/MM/yyyy hh:mm tt}'}" TextColor="Gray"></Label>
     </Grid>
 </ViewCell>
